@@ -7,7 +7,7 @@ app.listen(5500, () => {
 });
 
 app.get("/", (req, res) => {
-  res.send("welcome");
+  res.send("welcome to my home page");
 });
 
 //sub domain /name
