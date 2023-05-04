@@ -52,16 +52,6 @@ app.post("/usersView", (req, res) => {
     });
 });
 
-// app.get("/displayUsers", (req, res) => {
-//   UsersDB.find()
-//     .then((data) => {
-//       res.render("displayUsers.ejs", { users: data });
-//     })
-//     .catch((err) => {
-//       res.send(err);
-//     });
-// });
-
 //testing port 8080
 app.listen(8080, () => {
   console.log("Server is running on port 8080");
