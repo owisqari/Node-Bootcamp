@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Users</title>
+    <title>database test</title>
     <script
       src="https://kit.fontawesome.com/1bacf2776e.js"
       crossorigin="anonymous"
@@ -45,49 +45,64 @@
   <body>
     <div class="h-25">
       <div class="box">
-        <h1 style="font-size: 80px">LAP</h1>
+        <h1 style="font-size: 80px">HW</h1>
         <i class="fa-solid fa-angles-down fa-fade fa-2xl"></i>
       </div>
     </div>
 
-    <div class="h-75 d-flex align-items-center justify-content-center">
-      <form action="/usersView" method="post">
+    <div class="h-50 d-flex align-items-center justify-content-center">
+      <form action="/coursesView" method="post">
         <div class="input-group input-group-lg">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="">Name and Age</span>
+          <div class="input-group mb-3">
+            <input
+              name="CourseName"
+              type="text"
+              class="form-control"
+              placeholder="CourseName"
+              required
+            />
+            <span class="input-group-text"></span>
+            <input
+              name="NumOfUsers"
+              type="number"
+              class="form-control"
+              placeholder="NumOfUsers"
+              required
+            />
           </div>
-          <input
-            type="texr"
-            class="form-control"
-            name="name"
-            placeholder="name"
-            required
-          />
-          <input
-            type="number"
-            class="form-control"
-            name="age"
-            placeholder="age"
-            required
-          />
-          <button class="btn btn-primary" type="submit">submit</button>
+
+          <div class="input-group">
+            <span class="input-group-text">Description</span>
+            <textarea
+              class="form-control"
+              placeholder="Description"
+              name="Description"
+              required
+            ></textarea>
+          </div>
+          <div>
+            <button class="btn btn-primary" type="submit">submit</button>
+          </div>
         </div>
       </form>
-      <div class="h-25"></div>
-      <form action="usersView.ejs" method="get">
-        <% for(x of users) { %>
+    </div>
+    <div class="h-25 d-flex align-items-center justify-content-center mr-3">
+      <form action="coursesView" method="get">
+        <% for(x of courses) { %>
         <div
           class="card text-center mb-lg-3 card shadow-lg p-3 mb-5 bg-body rounded m-lg-auto"
           style="width: 18rem"
         >
           <div class="card-body">
-            <h5 class="card-title"><%= x.name%></h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= x.age%></h6>
+            <h5 class="card-title"><%= x.CourseName%></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= x.NumOfUsers%></h6>
+            <p class="card-text"><%= x.Description%></p>
           </div>
         </div>
         <% } %>
       </form>
     </div>
+
     <!-- BOOTSTRAP -->
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

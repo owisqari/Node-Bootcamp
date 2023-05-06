@@ -12,10 +12,6 @@ const usersSchema = new Schema(
   }
 );
 
-const findUsers = (name) => {
-  return users.find.all({});
-};
-
 const Users = mongoose.model("Users", usersSchema);
 
 module.exports = Users;

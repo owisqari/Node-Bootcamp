@@ -1,6 +1,7 @@
 const express = require("express");
 const url = require("mongoose");
-const UsersDB = require("../models/users");
+const UsersDB = require("../modules/Users");
+const CoursesDB = require("../modules/Courses");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -24,7 +25,7 @@ app.set("views", "./views");
 
 // root domain response
 app.get("/", (req, res) => {
-  res.send("welcome to my home page");
+  res.render("home.ejs");
 });
 
 app.get("/usersView", (req, res) => {
@@ -46,6 +47,32 @@ app.post("/usersView", (req, res) => {
     .save()
     .then(() => {
       res.redirect("/usersView");
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
+app.get("/coursesView", (req, res) => {
+  CoursesDB.find()
+    .then((data) => {
+      res.render("coursesView.ejs", { courses: data });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+app.post("/coursesView", (req, res) => {
+  const coursesData = new CoursesDB({
+    CourseName: req.body.CourseName,
+    NumOfUsers: req.body.NumOfUsers,
+    Description: req.body.Description,
+  });
+  coursesData
+    .save()
+    .then((data) => {
+      res.redirect("coursesView");
     })
     .catch((err) => {
       res.send(err);
